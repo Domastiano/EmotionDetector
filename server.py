@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from emotion_detection import emotion_detector
+from EmotionDetection.emotion_detection import emotion_detector
 
 app = Flask(__name__)
 
@@ -7,13 +7,17 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/emotionDetector', methods=['POST'])
+@app.route('/emotionDetector', methods=['GET'])
 def detect_emotion():
-    text = request.form['text']
-    result = emotion_detector(text)
+    text_to_analyze = request.args.get('textToAnalyze')
 
-    if result is None:
-        return "Error: Could not process the request."
+    if not text_to_analyze:
+        return "Error: No text provided."
+
+    result = emotion_detector(text_to_analyze)
+
+    if result is None or "error" in result:
+        return "Error: Unable to process the request."
 
     response_text = (
         f"For the given statement, the system response is "
