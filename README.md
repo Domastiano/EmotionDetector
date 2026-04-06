@@ -1,11 +1,4 @@
-# Emotion Detector
+# Final Project – Emotion Detector
 
-This project uses IBM Watson NLP to detect emotions in text.
-It exposes a Flask web interface and returns emotion scores for anger, disgust, fear, joy, and sadness.
-
-## Technologies
-- Python
-- IBM Watson NLP
-- Flask
-- unittest
-- pylint
+This project uses IBM Watson NLP to detect emotions (anger, disgust, fear, joy, sadness) from text input.
+It provides a Flask web interface and returns formatted emotion scores with the dominant emotion.
